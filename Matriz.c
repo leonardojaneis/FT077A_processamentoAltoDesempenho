@@ -18,7 +18,7 @@ for(int i=0; i<MATRIZ_SIZE;i++)
 }
 
  int** lerMatriz(char* fileName)
-{
+ {
 
     FILE *arq;
     int** matriz;
@@ -27,42 +27,38 @@ for(int i=0; i<MATRIZ_SIZE;i++)
     int j=0;
 
    if (fileName == NULL)
- 	{
+   {
         fprintf(stderr,"File name cannot be null\n");
         exit(EXIT_FAILURE);
- }
- 
- 
-
-for(i=0;i<MATRIZ_SIZE;i++)
-    { 
+   }
+   for(i=0;i<MATRIZ_SIZE;i++)
+   { 
          matriz[i]=malloc(sizeof(int)*MATRIZ_SIZE);
-         if(matriz[i] == NULL)
-         {
-            fprintf(stderr, "out of memory\n");
-            exit(0);
-         }
-    }
+            if(matriz[i] == NULL)
+            {
+                  fprintf(stderr, "out of memory\n");
+                  exit(0);
+            }
+   }
  
-     arq = fopen(fileName,"r");
+   arq = fopen(fileName,"r");
 
-     if (arq == NULL)
+   if (arq == NULL)
+   {
+   	      perror("I cannot open file to read\n");
+   	      exit(EXIT_FAILURE);
+   }
+
+   for(int k=0;k<MATRIZ_SIZE;k++)
+   {
+     for(j=0;j<MATRIZ_SIZE;j++)
      {
-   	perror("I cannot open file to read\n");
-   	exit(EXIT_FAILURE);
+         int arquivo;
+         fscanf(arq,"%d",&arquivo);
+         matriz[k][j] = arquivo;
      }
-
-     for(int k=0;k<MATRIZ_SIZE;k++)
-     {
- 
-         for(j=0;j<MATRIZ_SIZE;j++)
-         {
-                int test;
-                fscanf(arq,"%d",&test);
-                matriz[k][j] = test;
-         }
-      }
-      fclose(arq);
+   }
+ fclose(arq);
  return matriz;
 }
  
@@ -85,16 +81,16 @@ int** multMat(int** matriz1,  int** matriz2)
                 int mat2 = matriz2[k][j];
                 int mult = mat1*mat2;
                 resultP = resultP + mult;
-            }
+              }
             resultado[i][j] = sum;
         }
-    }
- return resultado;
+ 
+     }
+      return resultado;
 }
  
 int main()
 {
- 
       char* fileName1 = "matriz5.txt";
       char* fileName2 = "matriz6.txt";
       int** matriz1;
