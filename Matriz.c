@@ -23,8 +23,8 @@ for(int i=0; i<MATRIZ_SIZE;i++)
     FILE *arq;
     int** matriz;
     matriz = malloc(sizeof(int*)*MATRIZ_SIZE);
-    int i=0;
     int j=0;
+    int i=0;
 
    if (fileName == NULL)
    {
