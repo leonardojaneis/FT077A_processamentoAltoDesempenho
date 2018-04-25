@@ -97,6 +97,5 @@ int main(int argc, char* argv[])
     free((void *)matC[i]);
     free((void *)matC);
     free(threads);
-
     return 0;
 }
