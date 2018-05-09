@@ -10,10 +10,10 @@ int **matA, **matB, **matC;
 
 void *multiplica(void *arg)
 {
-	int pas = (int)arg;
+    int pas = (int)arg;
     int start = pas * SIZE/THRDS;
     int stop = (pas+1) * (SIZE/THRDS) - 1;
-	int i, j, k;
+    int i, j, k;
     for(i = start; i <= stop; i++) {
         for(j = 0; j < SIZE; j++) {
             matC[i][j] = 0;
@@ -68,7 +68,6 @@ int main(int argc, char* argv[])
     inicializa();
     threads = (pthread_t*)malloc(THRDS * sizeof(pthread_t));
 
-    
     clock_gettime(CLOCK_MONOTONIC, &begin);
 
     for(i = 0; i < THRDS; i++) {
@@ -80,13 +79,11 @@ int main(int argc, char* argv[])
         rc = pthread_join(threads[i], NULL);
         assert(rc == 0);
     } 
-
     clock_gettime(CLOCK_MONOTONIC, &end);
 
     elapsed = end.tv_sec - begin.tv_sec;
     elapsed += (end.tv_sec - begin.tv_sec) / 1000000000.0;
     printf("Elapsed time: %.2lf seconds.\n", elapsed);
-
     for(i = 0; i < SIZE; i++)
     free((void *)matA[i]);
     free((void *)matA);
@@ -97,9 +94,5 @@ int main(int argc, char* argv[])
     free((void *)matC[i]);
     free((void *)matC);
     free(threads);
-<<<<<<< HEAD
-
-=======
->>>>>>> 24f233412d19e7454e457f6cd4a060e17d8f953a
     return 0;
 }
