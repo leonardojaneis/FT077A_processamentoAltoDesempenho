@@ -103,7 +103,7 @@ int main()
       clock_t end = clock();
       double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
       printf("Tempo de execucao: %f\n", time_spent);	
-     // printMatriz(resultado);
+      // printMatriz(resultado);
       free(matrix1);
       free(matrix2);
       free(resultado);
