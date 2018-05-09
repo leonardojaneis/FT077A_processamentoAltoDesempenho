@@ -58,8 +58,8 @@ for(int i=0; i<MATRIZ_SIZE;i++)
          matriz[k][j] = arquivo;
      }
    }
- fclose(arq);
- return matriz;
+      fclose(arq);
+      return matriz;
 }
  
 int** multMat(int** matriz1,  int** matriz2)
