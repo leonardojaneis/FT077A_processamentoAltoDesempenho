@@ -62,7 +62,7 @@ for(int i=0; i<MATRIZ_SIZE;i++)
  return matriz;
 }
  
-int** multMat(int** matriz1,  int** matriz2)
+int** multMat(int** matriz1,  int** matriz2, int** matriz3)
 {
      int** resultado;
      resultado = malloc(sizeof(int*)*MATRIZ_SIZE);
@@ -70,19 +70,23 @@ int** multMat(int** matriz1,  int** matriz2)
      {
           resultado[i] = malloc(sizeof(int)*MATRIZ_SIZE);
      }
+	 
      for (int i=0;i<MATRIZ_SIZE;i++)
      {
          for(int j=0;j<MATRIZ_SIZE;j++)
          {
+			 int resultT = 0;
              int resultP = 0;
              for(int k=0;k<MATRIZ_SIZE;k++)
              {
                 int mat1 = matriz1[i][k];
                 int mat2 = matriz2[k][j];
+				int mat3 = matriz[i][j];
                 int mult = mat1*mat2;
                 resultP = resultP + mult;
+				resultT = resultP + mat3;
               }
-            resultado[i][j] = resultP;
+            resultado[i][j] = resultT;
         }
  
      }
@@ -91,22 +95,22 @@ int** multMat(int** matriz1,  int** matriz2)
  
 int main()
 {
-      char* fileName1 = "matriz5.txt";
-      char* fileName2 = "matriz6.txt";
+      char* fileName1 = "matriz1.txt";
+      char* fileName2 = "matriz2.txt";
+	  char* fileName3 = "matriz3.txt";
       int** matriz1;
       int** matriz2;
+	  int** matriz3;
       int** resultado;
       matriz1 = lerMatriz(fileName1);
-      matriz2 = lerMatriz(fileName2);     
+      matriz2 = lerMatriz(fileName2);
+	  matriz3 = lerMatriz(fileName3);
       clock_t begin = clock();
-      resultado = multMat(matriz1, matriz2);
+      resultado = multMat(matriz1, matriz2, matriz3);
       clock_t end = clock();
       double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
       printf("Tempo de execucao: %f\n", time_spent);	
-     // printMatriz(resultado);
-      free(matrix1);
-      free(matrix2);
-      free(resultado);
+      //printMatriz(resultado);
       return 0;
 }
 
