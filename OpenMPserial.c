@@ -75,16 +75,16 @@ int** multMat(int** matriz1,  int** matriz2, int** matriz3)
      {
          for(int j=0;j<MATRIZ_SIZE;j++)
          {
-			 int resultT = 0;
+	     int resultT = 0;
              int resultP = 0;
              for(int k=0;k<MATRIZ_SIZE;k++)
              {
                 int mat1 = matriz1[i][k];
                 int mat2 = matriz2[k][j];
-				int mat3 = matriz[i][j];
+		int mat3 = matriz[i][j];
                 int mult = mat1*mat2;
                 resultP = resultP + mult;
-				resultT = resultP + mat3;
+		resultT = resultP + mat3;
               }
             resultado[i][j] = resultT;
         }
@@ -97,14 +97,14 @@ int main()
 {
       char* fileName1 = "matriz1.txt";
       char* fileName2 = "matriz2.txt";
-	  char* fileName3 = "matriz3.txt";
+      char* fileName3 = "matriz3.txt";
       int** matriz1;
       int** matriz2;
-	  int** matriz3;
+      int** matriz3;
       int** resultado;
       matriz1 = lerMatriz(fileName1);
       matriz2 = lerMatriz(fileName2);
-	  matriz3 = lerMatriz(fileName3);
+      matriz3 = lerMatriz(fileName3);
       clock_t begin = clock();
       resultado = multMat(matriz1, matriz2, matriz3);
       clock_t end = clock();
