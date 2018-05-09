@@ -97,6 +97,9 @@ int main(int argc, char* argv[])
     free((void *)matC[i]);
     free((void *)matC);
     free(threads);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 24f233412d19e7454e457f6cd4a060e17d8f953a
     return 0;
 }
